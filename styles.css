@@ -1,0 +1,218 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e1f1ff;
+    overflow: hidden; /* Prevents scrolling */
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.sidebar {
+    background-color: #3b73b9;
+    padding: 20px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.sidebar a {
+    text-decoration: none;
+    width: 100%;
+}
+
+.sidebar button {
+    background-color: #4a8cd1;
+    border: none;
+    color: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+}
+
+.sidebar button:hover {
+    background-color: #366999;
+}
+
+.contact-label {
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+    text-align: center;
+    width: 100%;
+    background-color: #4a8cd1;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.sidebar .social-icons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.sidebar .social-icons img {
+    width: 30px;
+    height: 30px;
+}
+
+.sidebar p {
+    color: white;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.main-content {
+    flex-grow: 1;
+    background-image: url('taustakuva.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.main-content h1 {
+    font-size: 50px;
+    color: #ffffff;
+}
+
+.main-content h2 {
+    font-size: 24px;
+    color: #d3eaff;
+    margin-bottom: 50px;
+}
+
+.next-button {
+    background-color: #4a8cd1;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.next-button:hover {
+    background-color: #366999;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .sidebar button {
+        width: auto;
+        margin: 5px;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .contact-label {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+
+    .main-content h1 {
+        font-size: 36px;
+    }
+
+    .main-content h2 {
+        font-size: 20px;
+    }
+
+    .next-button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100vh;
+        overflow: hidden; /* Prevents scrolling on mobile */
+    }
+
+    .sidebar {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        background-color: #3b73b9;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
+    .sidebar button {
+        width: 100%;
+        margin: 5px 0;
+        padding: 15px;
+        font-size: 16px;
+        border-radius: 20px;
+    }
+
+    .sidebar .social-icons {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .sidebar .social-icons img {
+        width: 30px;
+        height: 30px;
+        margin: 0 5px; /* Adds space between icons */
+    }
+
+    .contact-label {
+        display: none; /* Hide the contact label on mobile */
+    }
+
+    .main-content h1 {
+        font-size: 28px;
+    }
+
+    .main-content h2 {
+        font-size: 18px;
+    }
+
+    .next-button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
