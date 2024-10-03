@@ -3,7 +3,19 @@
     padding: 0;
     box-sizing: border-box;
 }
+// <uniquifier>: Use a unique and descriptive class name
 
+.recursive-<uniquifier> {
+  font-family: "Recursive", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 366;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" -1,
+    "CASL" 0.44,
+    "CRSV" 1,
+    "MONO" 0.35;
+}
 body {
     font-family: Arial, sans-serif;
     background-color: #e1f1ff;
