@@ -17,7 +17,7 @@
     "MONO" 0.35;
 }
 body {
-    font-family: Arial, sans-serif;
+   
     background-color: #e1f1ff;
     overflow: hidden; /* Prevents scrolling */
 }
