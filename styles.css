@@ -1,27 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-// <uniquifier>: Use a unique and descriptive class name
-
-.recursive-<uniquifier> {
-  font-family: "Recursive", system-ui;
-  font-optical-sizing: auto;
-  font-weight: 366;
-  font-style: normal;
-  font-variation-settings:
-    "slnt" -1,
-    "CASL" 0.44,
-    "CRSV" 1,
-    "MONO" 0.35;
-}
-body {
-   
-    background-color: #e1f1ff;
-    overflow: hidden; /* Prevents scrolling */
-}
-
+/* Adjust the container to keep the sidebar links at the top */
 .container {
     display: flex;
     flex-direction: row;
@@ -33,14 +10,16 @@ body {
     padding: 20px;
     width: 200px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row; /* Changed to row to allow items to line up horizontally */
+    flex-wrap: wrap; /* Allows wrapping to a new row if the width is too small */
+    align-items: flex-start; /* Ensures links are always aligned to the top */
     justify-content: space-between;
 }
 
 .sidebar a {
     text-decoration: none;
-    width: 100%;
+    width: calc(50% - 10px); /* Set width to fit two buttons per row */
+    margin: 5px;
 }
 
 .sidebar button {
@@ -48,7 +27,7 @@ body {
     border: none;
     color: white;
     padding: 15px;
-    margin: 10px 0;
+    margin: 5px 0;
     border-radius: 20px;
     width: 100%;
     text-align: center;
@@ -57,79 +36,7 @@ body {
     display: block;
 }
 
-.sidebar button:hover {
-    background-color: #366999;
-}
-
-.contact-label {
-    font-size: 18px;
-    color: white;
-    font-weight: bold;
-    margin: 20px 0 10px 0;
-    text-align: center;
-    width: 100%;
-    background-color: #4a8cd1;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-.sidebar .social-icons {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 20px;
-}
-
-.sidebar .social-icons img {
-    width: 30px;
-    height: 30px;
-}
-
-.sidebar p {
-    color: white;
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-.main-content {
-    flex-grow: 1;
-    background-image: url('taustakuva.jpg');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-}
-
-.main-content h1 {
-    font-size: 50px;
-    color: #ffffff;
-}
-
-.main-content h2 {
-    font-size: 24px;
-    color: #d3eaff;
-    margin-bottom: 50px;
-}
-
-.next-button {
-    background-color: #4a8cd1;
-    border: none;
-    color: white;
-    padding: 15px 30px;
-    font-size: 18px;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-.next-button:hover {
-    background-color: #366999;
-}
-
-/* Responsive Design */
+/* Responsive design for smaller screens */
 @media screen and (max-width: 768px) {
     .container {
         flex-direction: column;
@@ -138,7 +45,13 @@ body {
     .sidebar {
         width: 100%;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .sidebar a {
+        width: auto; /* Adjust width to auto for smaller screens */
+        margin: 5px;
     }
 
     .sidebar button {
@@ -146,11 +59,6 @@ body {
         margin: 5px;
         padding: 10px;
         font-size: 14px;
-    }
-
-    .contact-label {
-        font-size: 16px;
-        padding: 8px;
     }
 
     .main-content {
