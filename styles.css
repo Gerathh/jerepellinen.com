@@ -1,7 +1,7 @@
-/* Adjust the container to keep the sidebar links at the top */
+/* Container with the sidebar on the right side on larger screens */
 .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse; /* Moves sidebar to the right */
     height: 100vh;
 }
 
@@ -10,16 +10,14 @@
     padding: 20px;
     width: 200px;
     display: flex;
-    flex-direction: row; /* Changed to row to allow items to line up horizontally */
-    flex-wrap: wrap; /* Allows wrapping to a new row if the width is too small */
-    align-items: flex-start; /* Ensures links are always aligned to the top */
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: space-between;
 }
 
 .sidebar a {
     text-decoration: none;
-    width: calc(50% - 10px); /* Set width to fit two buttons per row */
-    margin: 5px;
+    width: 100%;
 }
 
 .sidebar button {
@@ -27,7 +25,7 @@
     border: none;
     color: white;
     padding: 15px;
-    margin: 5px 0;
+    margin: 10px 0;
     border-radius: 20px;
     width: 100%;
     text-align: center;
@@ -36,7 +34,79 @@
     display: block;
 }
 
-/* Responsive design for smaller screens */
+.sidebar button:hover {
+    background-color: #366999;
+}
+
+.contact-label {
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+    text-align: center;
+    width: 100%;
+    background-color: #4a8cd1;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.sidebar .social-icons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.sidebar .social-icons img {
+    width: 30px;
+    height: 30px;
+}
+
+.sidebar p {
+    color: white;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.main-content {
+    flex-grow: 1;
+    background-image: url('taustakuva.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.main-content h1 {
+    font-size: 50px;
+    color: #ffffff;
+}
+
+.main-content h2 {
+    font-size: 24px;
+    color: #d3eaff;
+    margin-bottom: 50px;
+}
+
+.next-button {
+    background-color: #4a8cd1;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.next-button:hover {
+    background-color: #366999;
+}
+
+/* Responsive Design */
 @media screen and (max-width: 768px) {
     .container {
         flex-direction: column;
@@ -45,20 +115,27 @@
     .sidebar {
         width: 100%;
         flex-direction: row;
-        justify-content: flex-start;
-        flex-wrap: wrap;
+        justify-content: center; /* Centers the buttons */
+        align-items: center;
+        flex-wrap: wrap; /* Allows wrapping of buttons in a row */
+        padding: 10px;
     }
 
     .sidebar a {
-        width: auto; /* Adjust width to auto for smaller screens */
+        width: auto; /* Allows buttons to resize */
+        flex: 1 1 150px; /* Makes all buttons the same size */
         margin: 5px;
     }
 
     .sidebar button {
-        width: auto;
+        width: 100%;
         margin: 5px;
         padding: 10px;
         font-size: 14px;
+    }
+
+    .contact-label {
+        display: none; /* Hide contact label on small screens */
     }
 
     .main-content {
@@ -84,23 +161,24 @@
         flex-direction: column;
         justify-content: space-between;
         height: 100vh;
-        overflow: hidden; /* Prevents scrolling on mobile */
     }
 
     .sidebar {
         width: 100%;
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: center;
         align-items: center;
+        flex-wrap: wrap;
         padding: 10px;
-        background-color: #3b73b9;
-        position: absolute;
-        bottom: 0;
-        left: 0;
+    }
+
+    .sidebar a {
+        flex: 1 1 45%; /* Make sure buttons are same size and fit in one row */
+        margin: 5px;
     }
 
     .sidebar button {
         width: 100%;
-        margin: 5px 0;
         padding: 15px;
         font-size: 16px;
         border-radius: 20px;
@@ -117,10 +195,6 @@
         width: 30px;
         height: 30px;
         margin: 0 5px; /* Adds space between icons */
-    }
-
-    .contact-label {
-        display: none; /* Hide the contact label on mobile */
     }
 
     .main-content h1 {
