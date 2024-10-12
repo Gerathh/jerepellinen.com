@@ -1,78 +1,71 @@
-/* Container with the sidebar on the right side on larger screens */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background-image: url('taustakuva.jpg');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden; /* Prevents scrolling */
+}
+
 .container {
     display: flex;
-    flex-direction: row-reverse; /* Moves sidebar to the right */
+    flex-direction: column;
     height: 100vh;
 }
 
-.sidebar {
-    background-color: #3b73b9;
-    padding: 20px;
-    width: 200px;
+.topbar {
+    background-color: #1a1a2e;
+    padding: 10px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
     justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.sidebar a {
+.topbar a {
     text-decoration: none;
-    width: 100%;
 }
 
-.sidebar button {
-    background-color: #4a8cd1;
+.topbar button {
+    background: linear-gradient(45deg, #ff7b54, #ffcc29);
     border: none;
     color: white;
-    padding: 15px;
-    margin: 10px 0;
+    padding: 10px 20px;
+    margin: 10px;
     border-radius: 20px;
-    width: 100%;
-    text-align: center;
+    font-family: 'Lato', sans-serif;
     font-size: 16px;
     cursor: pointer;
-    display: block;
-}
-
-.sidebar button:hover {
-    background-color: #366999;
-}
-
-.contact-label {
-    font-size: 18px;
-    color: white;
-    font-weight: bold;
-    margin: 20px 0 10px 0;
     text-align: center;
-    width: 100%;
-    background-color: #4a8cd1;
-    padding: 10px;
-    border-radius: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.sidebar .social-icons {
+.topbar button:hover {
+    background: linear-gradient(45deg, #ffcc29, #ff7b54);
+    transform: translateY(-3px);
+}
+
+.topbar .social-icons {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 20px;
+    gap: 10px;
+    margin-left: auto;
 }
 
-.sidebar .social-icons img {
+.topbar .social-icons img {
     width: 30px;
     height: 30px;
 }
 
-.sidebar p {
-    color: white;
-    font-size: 14px;
-    margin-top: 10px;
-}
-
+/* Main content */
 .main-content {
     flex-grow: 1;
-    background-image: url('taustakuva.jpg');
-    background-size: cover;
-    background-position: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -82,64 +75,59 @@
 }
 
 .main-content h1 {
+    font-family: 'Bebas Neue', sans-serif;
     font-size: 50px;
-    color: #ffffff;
+    color: #ffd700; /* Bright golden color */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
 .main-content h2 {
+    font-family: 'Poppins', sans-serif;
     font-size: 24px;
-    color: #d3eaff;
+    color: #ff6f61; /* Bright coral color */
     margin-bottom: 50px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
 }
 
+.main-content h3 {
+    font-family: 'Pacifico', cursive;
+    font-size: 20px;
+    color: #32cd32; /* Lime green */
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Update the next-button to match topbar buttons */
 .next-button {
-    background-color: #4a8cd1;
+    background: linear-gradient(45deg, #ff7b54, #ffcc29);
     border: none;
     color: white;
-    padding: 15px 30px;
-    font-size: 18px;
+    padding: 10px 20px;
+    margin: 10px;
     border-radius: 20px;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
     cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .next-button:hover {
-    background-color: #366999;
+    background: linear-gradient(45deg, #ffcc29, #ff7b54);
+    transform: translateY(-3px);
 }
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
-    .container {
+    .topbar {
         flex-direction: column;
+        align-items: flex-start;
     }
 
-    .sidebar {
+    .topbar button {
         width: 100%;
-        flex-direction: row;
-        justify-content: center; /* Centers the buttons */
-        align-items: center;
-        flex-wrap: wrap; /* Allows wrapping of buttons in a row */
-        padding: 10px;
-    }
-
-    .sidebar a {
-        width: auto; /* Allows buttons to resize */
-        flex: 1 1 150px; /* Makes all buttons the same size */
-        margin: 5px;
-    }
-
-    .sidebar button {
-        width: 100%;
-        margin: 5px;
-        padding: 10px;
-        font-size: 14px;
-    }
-
-    .contact-label {
-        display: none; /* Hide contact label on small screens */
-    }
-
-    .main-content {
-        padding: 10px;
+        margin: 5px 0;
     }
 
     .main-content h1 {
@@ -157,44 +145,21 @@
 }
 
 @media screen and (max-width: 480px) {
-    .container {
+    .topbar {
         flex-direction: column;
-        justify-content: space-between;
-        height: 100vh;
-    }
-
-    .sidebar {
-        width: 100%;
-        flex-direction: row;
-        justify-content: center;
         align-items: center;
-        flex-wrap: wrap;
         padding: 10px;
     }
 
-    .sidebar a {
-        flex: 1 1 45%; /* Make sure buttons are same size and fit in one row */
-        margin: 5px;
-    }
-
-    .sidebar button {
+    .topbar button {
         width: 100%;
         padding: 15px;
         font-size: 16px;
-        border-radius: 20px;
     }
 
-    .sidebar .social-icons {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    .sidebar .social-icons img {
+    .topbar .social-icons img {
         width: 30px;
         height: 30px;
-        margin: 0 5px; /* Adds space between icons */
     }
 
     .main-content h1 {
