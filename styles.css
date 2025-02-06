@@ -1,12 +1,10 @@
-/* Global reset and smooth scrolling if needed */
-html {
-  scroll-behavior: smooth;
-}
+/* Global reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: 'Lato', sans-serif;
   background-image: url('tausta2.png');
@@ -15,148 +13,73 @@ body {
   overflow-x: hidden;
 }
 
-/* Container: centers page content */
+/* Container styling */
 .container {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* ─── Topbar (Navigation) ───────────────────────────── */
-/* No fixed positioning and no background */
+/* Topbar styling */
 .topbar {
-  background: transparent;
   padding: 20px;
 }
-.topbar > div:first-child {
-  /* The navigation links container; arranged vertically */
+
+.nav-container {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
-.topbar a {
-  text-decoration: none;
-  margin-bottom: 10px;
-}
-.topbar a button {
+
+.nav-button {
   background: linear-gradient(45deg, #ff7b54, #ffcc29);
   border: none;
   color: white;
-  padding: 10px 20px;
+  padding: 15px 20px;
   border-radius: 20px;
-  font-family: 'Lato', sans-serif;
   font-size: 16px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  width: 100%;
   text-align: left;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
 }
-.topbar a button:hover {
+
+.nav-button:hover {
   background: linear-gradient(45deg, #ffcc29, #ff7b54);
   transform: translateY(-3px);
 }
 
-/* Social icons styling */
+/* Social icons */
 .social-icons {
   display: flex;
   gap: 10px;
   margin-top: 20px;
 }
+
 .social-icons img {
   width: 30px;
   height: 30px;
 }
 
-/* Email text styling (inside .topbar) */
-.topbar p {
-  margin-top: 10px;
-}
-
-/* ─── Main Content ───────────────────────────── */
+/* Main content */
 .main-content {
   text-align: center;
   padding: 20px;
 }
-.main-content h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 50px;
-  color: #ffd700;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-}
-.main-content h2 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 24px;
-  color: #ff6f61;
-  margin-bottom: 50px;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
-}
-.main-content h3 {
-  font-family: 'Pacifico', cursive;
-  font-size: 20px;
-  color: #32cd32;
-  margin-bottom: 40px;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
-}
-.next-button {
-  background: linear-gradient(45deg, #ff7b54, #ffcc29);
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  margin: 10px;
-  border-radius: 20px;
-  font-family: 'Lato', sans-serif;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.next-button:hover {
-  background: linear-gradient(45deg, #ffcc29, #ff7b54);
-  transform: translateY(-3px);
-}
 
-/* ─── Accordion Container ───────────────────────────── */
-/* This container (created dynamically by JavaScript) will hold the loaded external page text. */
-#accordion-container {
+/* Accordion container */
+.accordion {
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.5s ease, padding 0.5s ease;
-  background: rgba(255, 255, 255, 0.9);
   margin: 10px 0;
-}
-#accordion-container.open {
-  /* A large max-height value ensures the content is fully visible */
-  max-height: 1000px;
-  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* ─── Responsive Design ───────────────────────────── */
-@media screen and (max-width: 768px) {
-  .topbar {
-    padding: 10px;
-  }
-  .topbar a button {
-    font-size: 14px;
-    padding: 8px 16px;
-  }
-  .main-content h1 {
-    font-size: 36px;
-  }
-  .main-content h2 {
-    font-size: 20px;
-  }
-}
-@media screen and (max-width: 480px) {
-  .topbar a button {
-    font-size: 12px;
-    padding: 6px 12px;
-  }
-  .main-content h1 {
-    font-size: 28px;
-  }
-  .main-content h2 {
-    font-size: 18px;
-  }
-  .next-button {
-    font-size: 12px;
-    padding: 6px 12px;
-  }
+.accordion.open {
+  max-height: 500px;
+  padding: 20px;
 }
