@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   const buttons = document.querySelectorAll('.nav-button');
   let activeAccordion = null;
+  let socialIcons = document.querySelector('.social-icons');
 
   buttons.forEach((button) => {
     button.addEventListener('click', function (event) {
@@ -15,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
         this.parentNode.insertBefore(accordion, this.nextSibling);
       }
 
-      // Toggle accordion visibility
+      // Toggle accordion visibility with animation
       if (activeAccordion === accordion) {
         accordion.classList.remove('open');
         activeAccordion = null;
