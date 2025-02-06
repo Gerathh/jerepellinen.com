@@ -1,103 +1,45 @@
-/* Reset styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+document.addEventListener('DOMContentLoaded', function () {
+  const buttons = document.querySelectorAll('.nav-button');
+  let activeAccordion = null;
+  let socialIcons = document.querySelector('.social-icons');
+  
+  buttons.forEach((button) => {
+    button.addEventListener('click', function (event) {
+      event.preventDefault();
+      const url = this.getAttribute('href');
+      let accordion = this.nextElementSibling;
 
-body {
-  font-family: 'Lato', sans-serif;
-  background-image: url('tausta2.png');
-  background-size: cover;
-  background-position: center;
-  color: #ffffff;
-}
+      // Create accordion if it doesn't exist
+      if (!accordion || !accordion.classList.contains('accordion')) {
+        accordion = document.createElement('div');
+        accordion.classList.add('accordion');
+        this.parentNode.insertBefore(accordion, this.nextSibling);
+      }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+      // Toggle accordion visibility
+      if (activeAccordion === accordion) {
+        accordion.classList.remove('open');
+        activeAccordion = null;
+        return;
+      }
 
-.topbar {
-  position: fixed;
-  top: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
-  padding: 20px;
-}
+      if (activeAccordion) {
+        activeAccordion.classList.remove('open');
+      }
 
-.nav-button {
-  display: block;
-  background: linear-gradient(45deg, #ff7b54, #ffcc29);
-  color: white;
-  text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 16px;
-  font-family: 'Lato', sans-serif;
-  text-align: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-}
-
-.nav-button:hover {
-  background: linear-gradient(45deg, #ffcc29, #ff7b54);
-  transform: translateY(-3px);
-}
-
-.social-icons {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.social-icons img {
-  width: 30px;
-  height: 30px;
-}
-
-.main-content {
-  text-align: center;
-  margin: 100px auto;
-}
-
-.profile-image {
-  width: 150px;
-  border-radius: 50%;
-  margin-bottom: 20px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
-  background-color: white;
-  padding: 10px;
-}
-
-/* Accordion container */
-.accordion {
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.5s ease, padding 0.5s ease;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 10px;
-  margin-top: 10px;
-  padding: 0 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.accordion.open {
-  max-height: 500px;
-  padding: 20px;
-}
-
-/* Accessibility enhancements */
-body {
-  background-color: #121212;
-}
-
-.nav-button {
-  color: #ffffff;
-  font-weight: bold;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-}
+      fetch(url)
+        .then((response) => response.text())
+        .then((data) => {
+          accordion.innerHTML = data;
+          accordion.appendChild(socialIcons); // Move social icons inside accordion
+          accordion.classList.add('open');
+          activeAccordion = accordion;
+        })
+        .catch(() => {
+          accordion.innerHTML = '<p>Could not load content.</p>';
+          accordion.classList.add('open');
+          activeAccordion = accordion;
+        });
+    });
+  });
+});
