@@ -1,4 +1,4 @@
-/* Enable smooth scrolling */
+/* Enable smooth scrolling for in‐page anchors */
 html {
     scroll-behavior: smooth;
 }
@@ -14,35 +14,31 @@ body {
     background-image: url('tausta2.png');
     background-size: cover;
     background-position: center;
-    /* Allow vertical scrolling (horizontal hidden if needed) */
-    overflow-x: hidden;
-    /* overflow-y will be auto by default */
+    overflow-x: hidden; /* hide horizontal scroll only */
 }
 
-/* The container remains as is – its children will work with our fixed sidebar */
 .container {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* ─── RIGHT SIDEBAR (formerly .topbar) ────────────────────────────── */
-/* Position the navigation on the right as a fixed sidebar */
+/* ─── Sidebar (Right Side) ────────────────────────────────────────── */
+/* Removed background so the sidebar is transparent */
 .topbar {
     position: fixed;
     top: 0;
     right: 0;
     height: 100vh;
-    width: 220px; /* adjust width as needed */
-    background-color: #1a1a2e;
+    width: 220px;  /* Adjust as needed */
+    background: transparent;  /* No background color */
     padding: 20px;
     display: flex;
     flex-direction: column;
-    /* Align items so that the content sits nicely inside the sidebar */
     align-items: flex-end;
 }
 
-/* Force buttons to appear first in the sidebar */
+/* Buttons in the sidebar */
 .topbar button {
     background: linear-gradient(45deg, #ff7b54, #ffcc29);
     border: none;
@@ -56,7 +52,7 @@ body {
     text-align: center;
     transition: all 0.3s ease;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    order: 1; /* Buttons appear first */
+    order: 1;  /* Ensures buttons appear first */
     width: 100%;
 }
 
@@ -65,19 +61,21 @@ body {
     transform: translateY(-3px);
 }
 
-/* Ensure that links (anchor tags) appear below the buttons */
+/* Link text appearing under the button. These should be simple anchor tags.
+   They won’t trigger a full page load if their href is an in‐page anchor (e.g. "#section1"). */
 .topbar a {
     text-decoration: none;
-    /* Set a color or inherit one as needed */
-    color: inherit;
-    order: 2; /* Links come after buttons */
+    color: #000;  /* Change if you need a different contrast */
+    order: 2;  /* Place links after buttons */
     margin-top: 10px;
     display: block;
     width: 100%;
     text-align: center;
+    font-size: 16px;
+    padding: 5px 0;
 }
 
-/* (Optional) Place social icons at the very bottom of the sidebar */
+/* Optional: Social icons at the bottom of the sidebar */
 .topbar .social-icons {
     margin-top: auto;
     display: flex;
@@ -89,7 +87,7 @@ body {
     height: 30px;
 }
 
-/* ─── MAIN CONTENT ──────────────────────────────────────────────────── */
+/* ─── Main Content ───────────────────────────────────────────────────── */
 .main-content {
     flex-grow: 1;
     display: flex;
@@ -98,8 +96,7 @@ body {
     align-items: center;
     text-align: center;
     padding: 20px;
-    /* Add right margin so the content does not hide behind the fixed sidebar */
-    margin-right: 240px;
+    margin-right: 240px; /* Prevent content from sliding under the sidebar */
 }
 
 .main-content h1 {
@@ -125,7 +122,7 @@ body {
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
 }
 
-/* Next button (styled like the topbar buttons) */
+/* Next button styled similarly to the sidebar buttons */
 .next-button {
     background: linear-gradient(45deg, #ff7b54, #ffcc29);
     border: none;
@@ -146,7 +143,7 @@ body {
     transform: translateY(-3px);
 }
 
-/* ─── RESPONSIVE ADJUSTMENTS ────────────────────────────────────────── */
+/* ─── Responsive Adjustments ────────────────────────────────────────── */
 @media screen and (max-width: 768px) {
     .topbar {
         width: 180px;
