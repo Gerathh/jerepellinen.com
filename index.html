@@ -1,47 +1,85 @@
-
-
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jere Pellinen - Tietojenkäsittelyn Tradenomi</title>
-    <!-- Link to Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@400;700&family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jere Pellinen - Tietojenkäsittelyn Tradenomi</title>
+  <!-- Link to Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@400;700&family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div class="container">
-        <div class="topbar">
-            <div>
-                <a href="asiantuntija.html"><button>Kuka on Jere Pellinen</button></a>
-                <a href="opiskeluni.html"><button>Opiskeluni</button></a>
-                <a href="tyohistoriani.html"><button>Työhistoriani</button></a>
-                <a href="harrastus.html"><button>Harrastukset</button></a>
-            </div>
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/jere-pellinen-187605279/" target="_blank">
-                    <img src="linkedin.png" alt="LinkedIn">
-                </a>
-                <a href="https://wa.me/+358452297855" target="_blank">
-                    <img src="whatsapp.png" alt="WhatsApp">
-                </a>
-                <a href="https://www.instagram.com/pellinenjere/" target="_blank">
-                    <img src="instagram.png" alt="Instagram">
-                </a>
-                <a href="https://www.facebook.com/jere.pellinen" target="_blank">
-                    <img src="facebook.png" alt="Facebook">
-                </a>
-            </div>
-            <p style="font-family: 'Poppins', sans-serif; font-size: 18px; color: #ffffff; text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);"></pstyle>jere.pellinen (at) outlook.com</p>
-        </div>
-        <div class="main-content">
-            <img src="Jere.png" alt="Jere Pellinen" style="width: 150px; border-radius: 50%; margin-bottom: 20px; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); background-color: white; padding: 10px;">
-            <h1>Jere Pellinen</h1>
-            <h2>Tietojenkäsittelyn Tradenomi</h2>
-            <h3>Personal Portfolio</h3>
-            <a href="index.html"><button class="next-button">Etusivulle</button></a>
-        </div>
+<body id="top">
+  <div class="container">
+    <!-- Sidebar (topbar) -->
+    <div class="topbar">
+      <!-- Navigation items -->
+      <a href="#kuka" class="nav-item">
+        <button>Kuka on Jere Pellinen</button>
+        <span class="nav-text">Kuka on Jere Pellinen</span>
+      </a>
+      <a href="#opiskeluni" class="nav-item">
+        <button>Opiskeluni</button>
+        <span class="nav-text">Opiskeluni</span>
+      </a>
+      <a href="#tyohistoriani" class="nav-item">
+        <button>Työhistoriani</button>
+        <span class="nav-text">Työhistoriani</span>
+      </a>
+      <a href="#harrastukset" class="nav-item">
+        <button>Harrastukset</button>
+        <span class="nav-text">Harrastukset</span>
+      </a>
+      
+      <!-- Social icons (remain unchanged) -->
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/jere-pellinen-187605279/" target="_blank">
+          <img src="linkedin.png" alt="LinkedIn">
+        </a>
+        <a href="https://wa.me/+358452297855" target="_blank">
+          <img src="whatsapp.png" alt="WhatsApp">
+        </a>
+        <a href="https://www.instagram.com/pellinenjere/" target="_blank">
+          <img src="instagram.png" alt="Instagram">
+        </a>
+        <a href="https://www.facebook.com/jere.pellinen" target="_blank">
+          <img src="facebook.png" alt="Facebook">
+        </a>
+      </div>
+      <p style="font-family: 'Poppins', sans-serif; font-size: 18px; color: #ffffff; text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);">
+        jere.pellinen (at) outlook.com
+      </p>
     </div>
+    
+    <!-- Main content (top section) -->
+    <div class="main-content">
+      <img src="Jere.png" alt="Jere Pellinen" style="width: 150px; border-radius: 50%; margin-bottom: 20px; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5); background-color: white; padding: 10px;">
+      <h1>Jere Pellinen</h1>
+      <h2>Tietojenkäsittelyn Tradenomi</h2>
+      <h3>Personal Portfolio</h3>
+      <!-- “Back to top” link (scrolls to the top of the page) -->
+      <a href="#top"><button class="next-button">Etusivulle</button></a>
+    </div>
+    
+    <!-- Additional content sections (one per navigation item) -->
+    <section id="kuka" class="content-section">
+      <h2>Kuka on Jere Pellinen</h2>
+      <p>Tässä voit esitellä itsestäsi ja kertoa kuka olet.</p>
+    </section>
+    
+    <section id="opiskeluni" class="content-section">
+      <h2>Opiskeluni</h2>
+      <p>Tähän osioon voit lisätä tietoa opinnoistasi.</p>
+    </section>
+    
+    <section id="tyohistoriani" class="content-section">
+      <h2>Työhistoriani</h2>
+      <p>Tähän osioon voit lisätä tietoa työkokemuksestasi.</p>
+    </section>
+    
+    <section id="harrastukset" class="content-section">
+      <h2>Harrastukset</h2>
+      <p>Tähän osioon voit lisätä tietoa harrastuksistasi.</p>
+    </section>
+  </div>
 </body>
 </html>
