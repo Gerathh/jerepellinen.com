@@ -1,57 +1,48 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // Select all navigation links inside .topbar
-  const links = document.querySelectorAll('.topbar a');
-  let accordionContainer = null;
-  let currentLink = null;
+document.addEventListener('DOMContentLoaded', function () {
+  const buttons = document.querySelectorAll('.nav-button');
+  let openAccordion = null;
 
-  // Create the accordion container dynamically and insert it between .topbar and .main-content
-  function createAccordionContainer() {
-    accordionContainer = document.createElement('div');
-    accordionContainer.id = 'accordion-container';
-    const container = document.querySelector('.container');
-    const mainContent = document.querySelector('.main-content');
-    container.insertBefore(accordionContainer, mainContent);
-  }
-
-  links.forEach(link => {
-    link.addEventListener('click', function(e) {
+  buttons.forEach((button) => {
+    button.addEventListener('click', function (e) {
       e.preventDefault();
-      const url = this.getAttribute('href');
 
-      // If no accordion container exists yet, create one
-      if (!accordionContainer) {
-        createAccordionContainer();
+      // Create or find the accordion container
+      let accordion = button.nextElementSibling;
+      if (!accordion || !accordion.classList.contains('accordion')) {
+        accordion = document.createElement('div');
+        accordion.classList.add('accordion');
+        button.parentNode.insertBefore(accordion, button.nextSibling);
       }
 
-      // If the same link is clicked and the accordion is open, toggle (close) it
-      if (currentLink === url && accordionContainer.classList.contains('open')) {
-        accordionContainer.classList.remove('open');
-        // Optionally clear the content after the slide-up animation
-        setTimeout(() => {
-          accordionContainer.innerHTML = '';
-        }, 500);
-        currentLink = null;
+      // If this accordion is already open, close it
+      if (accordion === openAccordion) {
+        accordion.classList.remove('open');
+        openAccordion = null;
         return;
       }
 
-      // Otherwise, fetch the new content
+      // Close any previously opened accordion
+      if (openAccordion) {
+        openAccordion.classList.remove('open');
+      }
+
+      // Fetch content for the button
+      const url = button.parentElement.getAttribute('href');
       fetch(url)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
+        .then((response) => {
+          if (!response.ok) throw new Error('Failed to fetch content');
           return response.text();
         })
-        .then(html => {
-          accordionContainer.innerHTML = html;
-          accordionContainer.classList.add('open');
-          currentLink = url;
+        .then((data) => {
+          accordion.innerHTML = data;
+          accordion.classList.add('open');
+          openAccordion = accordion;
         })
-        .catch(error => {
-          console.error('Error loading content:', error);
-          accordionContainer.innerHTML = '<p>Error loading content.</p>';
-          accordionContainer.classList.add('open');
-          currentLink = url;
+        .catch((error) => {
+          console.error(error);
+          accordion.innerHTML = '<p>Content could not be loaded.</p>';
+          accordion.classList.add('open');
+          openAccordion = accordion;
         });
     });
   });
