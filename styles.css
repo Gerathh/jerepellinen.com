@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
         this.parentNode.insertBefore(accordion, this.nextSibling);
       }
 
-      // Toggle accordion visibility
+      // Toggle accordion visibility with animation
       if (activeAccordion === accordion) {
         accordion.classList.remove('open');
         activeAccordion = null;
@@ -42,4 +42,3 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
   });
-});
