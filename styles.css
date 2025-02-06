@@ -1,4 +1,4 @@
-/* Global reset */
+/* Reset styles */
 * {
   margin: 0;
   padding: 0;
@@ -10,36 +10,36 @@ body {
   background-image: url('tausta2.png');
   background-size: cover;
   background-position: center;
-  overflow-x: hidden;
+  color: #ffffff;
 }
 
-/* Container styling */
 .container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* Topbar styling */
 .topbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
   padding: 20px;
 }
 
-.nav-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
 .nav-button {
+  display: block;
   background: linear-gradient(45deg, #ff7b54, #ffcc29);
-  border: none;
   color: white;
-  padding: 15px 20px;
+  text-decoration: none;
+  padding: 10px 20px;
   border-radius: 20px;
   font-size: 16px;
-  cursor: pointer;
-  text-align: left;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
 }
@@ -49,7 +49,6 @@ body {
   transform: translateY(-3px);
 }
 
-/* Social icons */
 .social-icons {
   display: flex;
   gap: 10px;
@@ -61,10 +60,18 @@ body {
   height: 30px;
 }
 
-/* Main content */
 .main-content {
   text-align: center;
-  padding: 20px;
+  margin: 100px auto;
+}
+
+.profile-image {
+  width: 150px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+  background-color: white;
+  padding: 10px;
 }
 
 /* Accordion container */
@@ -72,14 +79,25 @@ body {
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.5s ease, padding 0.5s ease;
-  margin: 10px 0;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 0 20px;
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
+  padding: 0 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .accordion.open {
   max-height: 500px;
   padding: 20px;
+}
+
+/* Accessibility enhancements */
+body {
+  background-color: #121212;
+}
+
+.nav-button {
+  color: #ffffff;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
