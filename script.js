@@ -1,48 +1,42 @@
 document.addEventListener('DOMContentLoaded', function () {
   const buttons = document.querySelectorAll('.nav-button');
-  let openAccordion = null;
+  let activeAccordion = null;
 
   buttons.forEach((button) => {
-    button.addEventListener('click', function (e) {
-      e.preventDefault();
+    button.addEventListener('click', function (event) {
+      event.preventDefault();
+      const url = this.getAttribute('href');
+      let accordion = this.nextElementSibling;
 
-      // Create or find the accordion container
-      let accordion = button.nextElementSibling;
+      // Create accordion if it doesn't exist
       if (!accordion || !accordion.classList.contains('accordion')) {
         accordion = document.createElement('div');
         accordion.classList.add('accordion');
-        button.parentNode.insertBefore(accordion, button.nextSibling);
+        this.parentNode.insertBefore(accordion, this.nextSibling);
       }
 
-      // If this accordion is already open, close it
-      if (accordion === openAccordion) {
+      // Toggle accordion visibility
+      if (activeAccordion === accordion) {
         accordion.classList.remove('open');
-        openAccordion = null;
+        activeAccordion = null;
         return;
       }
 
-      // Close any previously opened accordion
-      if (openAccordion) {
-        openAccordion.classList.remove('open');
+      if (activeAccordion) {
+        activeAccordion.classList.remove('open');
       }
 
-      // Fetch content for the button
-      const url = button.parentElement.getAttribute('href');
       fetch(url)
-        .then((response) => {
-          if (!response.ok) throw new Error('Failed to fetch content');
-          return response.text();
-        })
+        .then((response) => response.text())
         .then((data) => {
           accordion.innerHTML = data;
           accordion.classList.add('open');
-          openAccordion = accordion;
+          activeAccordion = accordion;
         })
-        .catch((error) => {
-          console.error(error);
-          accordion.innerHTML = '<p>Content could not be loaded.</p>';
+        .catch(() => {
+          accordion.innerHTML = '<p>Could not load content.</p>';
           accordion.classList.add('open');
-          openAccordion = accordion;
+          activeAccordion = accordion;
         });
     });
   });
