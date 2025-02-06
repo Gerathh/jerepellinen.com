@@ -1,4 +1,7 @@
-
+/* Enable smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
 
 * {
     margin: 0;
@@ -11,34 +14,41 @@ body {
     background-image: url('tausta2.png');
     background-size: cover;
     background-position: center;
-    overflow: hidden; /* Prevents scrolling */
+    /* Allow vertical scrolling (horizontal hidden if needed) */
+    overflow-x: hidden;
+    /* overflow-y will be auto by default */
 }
 
+/* The container remains as is – its children will work with our fixed sidebar */
 .container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
 }
 
+/* ─── RIGHT SIDEBAR (formerly .topbar) ────────────────────────────── */
+/* Position the navigation on the right as a fixed sidebar */
 .topbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 220px; /* adjust width as needed */
     background-color: #1a1a2e;
-    padding: 10px;
+    padding: 20px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    /* Align items so that the content sits nicely inside the sidebar */
+    align-items: flex-end;
 }
 
-.topbar a {
-    text-decoration: none;
-}
-
+/* Force buttons to appear first in the sidebar */
 .topbar button {
     background: linear-gradient(45deg, #ff7b54, #ffcc29);
     border: none;
     color: white;
     padding: 10px 20px;
-    margin: 10px;
+    margin: 10px 0;
     border-radius: 20px;
     font-family: 'Lato', sans-serif;
     font-size: 16px;
@@ -46,6 +56,8 @@ body {
     text-align: center;
     transition: all 0.3s ease;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    order: 1; /* Buttons appear first */
+    width: 100%;
 }
 
 .topbar button:hover {
@@ -53,10 +65,23 @@ body {
     transform: translateY(-3px);
 }
 
+/* Ensure that links (anchor tags) appear below the buttons */
+.topbar a {
+    text-decoration: none;
+    /* Set a color or inherit one as needed */
+    color: inherit;
+    order: 2; /* Links come after buttons */
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+/* (Optional) Place social icons at the very bottom of the sidebar */
 .topbar .social-icons {
+    margin-top: auto;
     display: flex;
     gap: 10px;
-    margin-left: auto;
 }
 
 .topbar .social-icons img {
@@ -64,7 +89,7 @@ body {
     height: 30px;
 }
 
-/* Main content */
+/* ─── MAIN CONTENT ──────────────────────────────────────────────────── */
 .main-content {
     flex-grow: 1;
     display: flex;
@@ -73,6 +98,8 @@ body {
     align-items: center;
     text-align: center;
     padding: 20px;
+    /* Add right margin so the content does not hide behind the fixed sidebar */
+    margin-right: 240px;
 }
 
 .main-content h1 {
@@ -98,7 +125,7 @@ body {
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
 }
 
-/* Update the next-button to match topbar buttons */
+/* Next button (styled like the topbar buttons) */
 .next-button {
     background: linear-gradient(45deg, #ff7b54, #ffcc29);
     border: none;
@@ -119,16 +146,22 @@ body {
     transform: translateY(-3px);
 }
 
-/* Responsive Design */
+/* ─── RESPONSIVE ADJUSTMENTS ────────────────────────────────────────── */
 @media screen and (max-width: 768px) {
     .topbar {
-        flex-direction: column;
-        align-items: flex-start;
+        width: 180px;
+        padding: 10px;
+        align-items: center;
     }
 
-    .topbar button {
+    .topbar button,
+    .topbar a {
         width: 100%;
         margin: 5px 0;
+    }
+
+    .main-content {
+        margin-right: 200px;
     }
 
     .main-content h1 {
@@ -147,13 +180,12 @@ body {
 
 @media screen and (max-width: 480px) {
     .topbar {
-        flex-direction: column;
-        align-items: center;
+        width: 150px;
         padding: 10px;
+        align-items: center;
     }
 
     .topbar button {
-        width: 100%;
         padding: 15px;
         font-size: 16px;
     }
@@ -161,6 +193,10 @@ body {
     .topbar .social-icons img {
         width: 30px;
         height: 30px;
+    }
+
+    .main-content {
+        margin-right: 170px;
     }
 
     .main-content h1 {
