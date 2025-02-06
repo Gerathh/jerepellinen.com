@@ -1,211 +1,161 @@
-/* Enable smooth scrolling for in‐page anchors */
+/* Enable smooth scrolling for in-page navigation */
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Lato', sans-serif;
-    background-image: url('tausta2.png');
-    background-size: cover;
-    background-position: center;
-    overflow-x: hidden; /* hide horizontal scroll only */
+  font-family: 'Lato', sans-serif;
+  background-image: url('tausta2.png');
+  background-size: cover;
+  background-position: center;
+  overflow-x: hidden; /* Hide horizontal scrolling */
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* ─── Sidebar (Right Side) ────────────────────────────────────────── */
-/* Removed background so the sidebar is transparent */
+/* ─── Fixed Right Sidebar (Topbar) ────────────────────────────── */
+/* The sidebar is fixed to the right and has a transparent background */
 .topbar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 220px;  /* Adjust as needed */
-    background: transparent;  /* No background color */
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 220px; /* Adjust as needed */
+  background: transparent;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
-/* Buttons in the sidebar */
-.topbar button {
-    background: linear-gradient(45deg, #ff7b54, #ffcc29);
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    margin: 10px 0;
-    border-radius: 20px;
-    font-family: 'Lato', sans-serif;
-    font-size: 16px;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    order: 1;  /* Ensures buttons appear first */
-    width: 100%;
+/* Navigation items in the sidebar */
+/* Each nav-item contains a button and a text label */
+.topbar .nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+  text-decoration: none; /* Remove underline from links */
 }
 
-.topbar button:hover {
-    background: linear-gradient(45deg, #ffcc29, #ff7b54);
-    transform: translateY(-3px);
+/* Button styling for nav-item buttons */
+.topbar .nav-item button {
+  background: linear-gradient(45deg, #ff7b54, #ffcc29);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  width: 100%;
 }
 
-/* Link text appearing under the button. These should be simple anchor tags.
-   They won’t trigger a full page load if their href is an in‐page anchor (e.g. "#section1"). */
-.topbar a {
-    text-decoration: none;
-    color: #000;  /* Change if you need a different contrast */
-    order: 2;  /* Place links after buttons */
-    margin-top: 10px;
-    display: block;
-    width: 100%;
-    text-align: center;
-    font-size: 16px;
-    padding: 5px 0;
+.topbar .nav-item button:hover {
+  background: linear-gradient(45deg, #ffcc29, #ff7b54);
+  transform: translateY(-3px);
 }
 
-/* Optional: Social icons at the bottom of the sidebar */
+/* Link text (description) that appears under each button */
+.topbar .nav-item .nav-text {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+}
+
+/* Social icons container positioned at the bottom of the sidebar */
 .topbar .social-icons {
-    margin-top: auto;
-    display: flex;
-    gap: 10px;
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
 }
 
 .topbar .social-icons img {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
 }
 
-/* ─── Main Content ───────────────────────────────────────────────────── */
+/* Email text styling (if used) */
+.topbar p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  color: #ffffff;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* ─── Main Content Area ────────────────────────────────────────── */
 .main-content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    margin-right: 240px; /* Prevent content from sliding under the sidebar */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  margin-right: 240px; /* Add space so main content does not get hidden behind the sidebar */
 }
 
 .main-content h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 50px;
-    color: #ffd700; /* Bright golden color */
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 50px;
+  color: #ffd700; /* Bright golden color */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
 .main-content h2 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 24px;
-    color: #ff6f61; /* Bright coral color */
-    margin-bottom: 50px;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  color: #ff6f61; /* Bright coral color */
+  margin-bottom: 50px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 .main-content h3 {
-    font-family: 'Pacifico', cursive;
-    font-size: 20px;
-    color: #32cd32; /* Lime green */
-    margin-bottom: 40px;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  font-family: 'Pacifico', cursive;
+  font-size: 20px;
+  color: #32cd32; /* Lime green */
+  margin-bottom: 40px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
 }
 
-/* Next button styled similarly to the sidebar buttons */
+/* Next button (e.g. “Back to Top”) styling */
 .next-button {
-    background: linear-gradient(45deg, #ff7b54, #ffcc29);
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    margin: 10px;
-    border-radius: 20px;
-    font-family: 'Lato', sans-serif;
-    font-size: 16px;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(45deg, #ff7b54, #ffcc29);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 20px;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .next-button:hover {
-    background: linear-gradient(45deg, #ffcc29, #ff7b54);
-    transform: translateY(-3px);
+  background: linear-gradient(45deg, #ffcc29, #ff7b54);
+  transform: translateY(-3px);
 }
 
-/* ─── Responsive Adjustments ────────────────────────────────────────── */
-@media screen and (max-width: 768px) {
-    .topbar {
-        width: 180px;
-        padding: 10px;
-        align-items: center;
-    }
-
-    .topbar button,
-    .topbar a {
-        width: 100%;
-        margin: 5px 0;
-    }
-
-    .main-content {
-        margin-right: 200px;
-    }
-
-    .main-content h1 {
-        font-size: 36px;
-    }
-
-    .main-content h2 {
-        font-size: 20px;
-    }
-
-    .next-button {
-        padding: 10px 20px;
-        font-size: 16px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .topbar {
-        width: 150px;
-        padding: 10px;
-        align-items: center;
-    }
-
-    .topbar button {
-        padding: 15px;
-        font-size: 16px;
-    }
-
-    .topbar .social-icons img {
-        width: 30px;
-        height: 30px;
-    }
-
-    .main-content {
-        margin-right: 170px;
-    }
-
-    .main-content h1 {
-        font-size: 28px;
-    }
-
-    .main-content h2 {
-        font-size: 18px;
-    }
-
-    .next-button {
-        padding: 8px 16px;
-        font-size: 14px;
-    }
-}
+/* ─── Additional Content Sections ──────────────────────────────── */
+.content-section {
+  padding: 40px 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Light overlay for readability */
+  margin: 20px auto;
+  max-w
