@@ -1,43 +1,22 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const buttons = document.querySelectorAll('.nav-button');
-  let activeAccordion = null;
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opiskeluni - Jere Pellinen</title>
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Lato:wght@400;700&family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+            <h1>Opiskeluni</h1>
+            <p style="font-family: 'Poppins', sans-serif; font-size: 18px; color: #ffffff; text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);">
 
-  buttons.forEach((button) => {
-    button.addEventListener('click', function (event) {
-      event.preventDefault();
-      const url = this.getAttribute('href');
-      let accordion = this.nextElementSibling;
-
-      // Create accordion if it doesn't exist
-      if (!accordion || !accordion.classList.contains('accordion')) {
-        accordion = document.createElement('div');
-        accordion.classList.add('accordion');
-        this.parentNode.insertBefore(accordion, this.nextSibling);
-      }
-
-      // Toggle accordion visibility
-      if (activeAccordion === accordion) {
-        accordion.classList.remove('open');
-        activeAccordion = null;
-        return;
-      }
-
-      if (activeAccordion) {
-        activeAccordion.classList.remove('open');
-      }
-
-      fetch(url)
-        .then((response) => response.text())
-        .then((data) => {
-          accordion.innerHTML = data;
-          accordion.classList.add('open');
-          activeAccordion = accordion;
-        })
-        .catch(() => {
-          accordion.innerHTML = '<p>Could not load content.</p>';
-          accordion.classList.add('open');
-          activeAccordion = accordion;
-        });
-    });
-  });
-});
+                Vapaa-ajallani harrastan lyhyitä juoksulenkkejä koirani kanssa, pelaan tietokonepelejä ja vietän aikaa koiran kanssa leikkien, ja tietysti kavereiden kanssa hengailua.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
